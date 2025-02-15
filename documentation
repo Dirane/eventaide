@@ -1,0 +1,162 @@
+# EventAide API Documentation
+
+## Overview
+EventAide API provides endpoints for users to RSVP for events, retrieve RSVP lists, and cancel RSVPs. The API is documented using Swagger and follows RESTful principles.
+
+## Base URL
+
+http://localhost:5000
+
+
+## Swagger Documentation
+The API documentation is available at:
+
+http://localhost:5000/api-docs
+
+
+## Authentication
+This version of the API does not include authentication.I am still doing research on that
+
+
+## Endpoints
+
+### 1. RSVP for an Event
+#### POST`/api/rsvp`
+Allows users to RSVP for an event.
+
+#### Request Body
+json
+{
+  "eventId": 1,
+  "userId": 123,
+  "userName": "Chana"
+}
+
+
+#### Responses
+- `201 Created`: RSVP successful.
+- `400 Bad Request`: Missing or invalid parameters.
+- `404 Not Found`: Event does not exist.
+- `400 Bad Request`: User has already RSVPed.
+
+#### Example Response (Success)
+json
+{
+  "message": "RSVP successful",
+  "rsvp": {
+    "eventId": 1,
+    "userId": 123,
+    "userName": "Chana"
+  }
+}
+
+
+#### Example Response(Event Not Found)
+```json
+{
+  "error": "Event not found"
+}
+```
+
+---
+
+### 2. Get RSVPs for an Event
+#### GET `/api/rsvp/{eventId}`
+Fetches all RSVPs for a given event.
+
+#### Path Parameter
+- `eventId` (integer, required): The ID of the event.
+
+#### Responses
+- `200 OK`: List of RSVPs returned.
+- `404 Not Found`: No RSVPs found for this event.
+
+#### Example Response (Success)
+```json
+{
+  "eventId": 1,
+  "rsvps": [
+    { "userId": 123, "userName": "John Doe" },
+    { "userId": 456, "userName": "Jane Smith" }
+  ]
+}
+```
+
+#### Example Response (No RSVPs Found)
+```json
+{
+  "error": "No RSVPs found for this event"
+}
+```
+
+---
+
+### 3. Cancel an RSVP
+#### **DELETE** `/api/rsvp/{eventId}/{userId}`
+Allows a user to cancel their RSVP.
+
+#### Path Parameters
+- `eventId` (integer, required): The ID of the event.
+- `userId` (integer, required): The ID of the user canceling their RSVP.
+
+#### Responses
+- `200 OK`: RSVP successfully canceled.
+- `404 Not Found`: RSVP does not exist.
+
+#### Example Response (Success)
+```json
+{
+  "message": "RSVP cancelled successfully"
+}
+```
+
+#### Example Response (RSVP Not Found)
+```json
+{
+  "error": "RSVP not found"
+}
+```
+
+---
+
+## Swagger Configuration
+The API is documented using Swagger (`swagger-jsdoc` and `swagger-ui-express`).
+
+### Swagger Setup in `swagger.js`
+```javascript
+const swaggerJsDoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
+
+const options = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "EventAide API",
+      version: "1.0.0",
+      description: "API documentation for EventAide application",
+    },
+    servers: [{ url: "http://localhost:5000" }],
+  },
+  apis: ["./server.js"], // Reference the API file containing Swagger comments
+};
+
+const swaggerSpec = swaggerJsDoc(options);
+
+module.exports = { swaggerUi, swaggerSpec };
+```
+
+### **Using Swagger in `server.js`
+```javascript
+const { swaggerUi, swaggerSpec } = require("./swagger");
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+```
+
+Now, Swagger documentation is available at `http://localhost:5000/api-docs`.
+
+---
+
+## Conclusion
+This documentation provides a structured overview of the RSVP functionality in EventAide API. Future improvements may include authentication, pagination, and database storage instead of in-memory lists.
+
+For any issues or contributions, refer to the repository or contact the developer.
+

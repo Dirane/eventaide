@@ -11,3 +11,25 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #313178; /* Updated background color */
+}
+
+.hidden {
+  display: none;
+}
+.md-sec{
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+.md\\:hidden {
+  display: none;
+}
+
+ 

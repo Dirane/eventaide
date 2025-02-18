@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './header.css';
+
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,11 +20,12 @@ const Header = () => {
 
                 {/* Navigation Links */}
                 <ul className="nav-links hidden md:flex">
-                    <li><a href="#" className="nav-link">Home</a></li>
-                    <li><a href="#" className="nav-link">About</a></li>
-                    <li><a href="#" className="nav-link">Services</a></li>
-                    <li><a href="#" className="nav-link">Portfolio</a></li>
-                    <li><a href="#" className="nav-link">Contact</a></li>
+                    <li><Link to="/" className="nav-link">Home</Link></li>
+                    <li><Link to="/about" className="nav-link">About</Link></li>
+                    <li><Link to="/services" className="nav-link">Services</Link></li>
+                    <li><Link to="/portfolio" className="nav-link">Portfolio</Link></li>
+                    <li><Link to="/contact" className="nav-link">Contact</Link></li>
+
                 </ul>
 
                 {/* Hamburger Menu (Visible on Small Screens) */}
@@ -36,11 +39,12 @@ const Header = () => {
             {/* Mobile Menu */}
             {isMenuOpen && (
                 <ul className="mobile-menu md:hidden">
-                    <li><a href="#" className="mobile-nav-link">Home</a></li>
-                    <li><a href="#" className="mobile-nav-link">About</a></li>
-                    <li><a href="#" className="mobile-nav-link">Services</a></li>
-                    <li><a href="#" className="mobile-nav-link">Portfolio</a></li>
-                    <li><a href="#" className="mobile-nav-link">Contact</a></li>
+                    <li><Link to="/" className="mobile-nav-link">Home</Link></li>
+                    <li><Link to="/about" className="mobile-nav-link">About</Link></li>
+                    <li><Link to="/services" className="mobile-nav-link">Services</Link></li>
+                    <li><Link to="/portfolio" className="mobile-nav-link">Portfolio</Link></li>
+                    <li><Link to="/contact" className="mobile-nav-link">Contact</Link></li>
+
                 </ul>
             )}
 

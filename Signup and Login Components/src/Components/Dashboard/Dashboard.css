@@ -1,0 +1,102 @@
+.dashboard-container {
+  display: flex;
+  
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #2c3e50;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar-header {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.sidebar-nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar-nav ul li {
+  margin-bottom: 10px;
+}
+
+.sidebar-nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar-nav ul li a:hover {
+  text-decoration: underline;
+}
+
+.dashboard-main {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.user-info {
+  text-align: right;
+}
+
+.overview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.overview-card {
+  background-color: #140941;
+  color: white;
+  border: 1px solid #bdc3c7;
+  border-radius: 8px;
+  padding: 20px;
+  width: 100%;
+}
+
+.event-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  list-style-type: none;
+  padding: 0;
+}
+
+.event-card {
+  background-color:    #cecdd3;
+  color: black;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.event-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.event-date,
+.event-description,
+.event-location {
+  margin-bottom: 5px;
+}
+
+.additional-info {
+  margin-top: 20px;
+}
+
+.action-buttons button {
+  margin-right: 10px;
+}
